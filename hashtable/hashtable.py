@@ -87,6 +87,24 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        hash = self.hash_index(key)
+
+        if not self.table[hash]:
+            self.table[hash] = HashTableEntry(key, value)
+            self.size += 1
+
+        else:
+            node = self.table[hash]
+
+            while node.next and node.key != key:
+                node = node.next
+
+            if node.key == key:
+                node.value = value
+
+            else:
+                node.next = HashTableEntry(key, value)
+                self.size += 1
 
     def delete(self, key):
         """
