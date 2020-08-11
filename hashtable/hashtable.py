@@ -27,13 +27,7 @@ class HashTable:
         self.size = 0
         self.table = [None] * capacity
 
-
-<< << << < HEAD
-== == == =
-
->>>>>> > 5cfe10916129cacf3bc66240d52e05f92931120a
-
-   def get_num_slots(self):
+    def get_num_slots(self):
         """
         Return the length of the list you're using to hold the hash
         table data. (Not the number of items stored in the hash table,
@@ -45,12 +39,8 @@ class HashTable:
         """
         # Your code here
         return self.size
-<< << << < HEAD
-== == == =
 
->>>>>> > 5cfe10916129cacf3bc66240d52e05f92931120a
-
-   def get_load_factor(self):
+    def get_load_factor(self):
         """
         Return the load factor for this hash table.
 
