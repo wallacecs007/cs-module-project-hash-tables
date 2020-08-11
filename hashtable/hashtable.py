@@ -38,7 +38,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        return self.size
+        return self.capacity
 
     def get_load_factor(self):
         """
@@ -181,6 +181,9 @@ class HashTable:
         Implement this.
         """
         # Your code here
+
+        if new_capacity == 1024:
+            print(new_capacity)
 
         hold_table = self.table
         self.capacity = new_capacity
