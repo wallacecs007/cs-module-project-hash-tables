@@ -26,6 +26,10 @@ class HashTable:
         self.capacity = capacity
         self.size = 0
         self.table = [None] * capacity
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5cfe10916129cacf3bc66240d52e05f92931120a
 
     def get_num_slots(self):
         """
@@ -39,6 +43,10 @@ class HashTable:
         """
         # Your code here
         return self.size
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5cfe10916129cacf3bc66240d52e05f92931120a
 
     def get_load_factor(self):
         """
@@ -65,15 +73,28 @@ class HashTable:
         Implement this, and/or FNV-1.
         """
         # Your code here
+<<<<<<< HEAD
         # Prime number for base hash
         hash = 5381
 
         # Turning everything into UTF-8 numbers
+=======
+        #Prime number for base hash
+        hash = 5381
+
+        #Turning everything into UTF-8 numbers
+>>>>>>> 5cfe10916129cacf3bc66240d52e05f92931120a
         string_utf = key.encode()
 
         for char in string_utf:
             hash = hash * 33 + char
             hash &= 0xffffffff
+<<<<<<< HEAD
+=======
+
+        return hash
+        
+>>>>>>> 5cfe10916129cacf3bc66240d52e05f92931120a
 
         return hash
 
@@ -103,6 +124,7 @@ class HashTable:
         else:
             node = self.table[hash_index]
 
+<<<<<<< HEAD
             # This checks to see if there is still a node in the list and if the key is unique
             while node.next and node.key != key:
                 node = node.next
@@ -112,6 +134,17 @@ class HashTable:
             if node.key == key:
                 node.value = value
             # Adding new node to end of list
+=======
+            #This checks to see if there is still a node in the list and if the key is unique
+            while node.next and node.key != key:
+                node = node.next
+
+            #After getting the last node or finding a matching key logic begins
+            #Updates the value if the key is already in the list
+            if node.key == key:
+                node.value = value
+            #Adding new node to end of list
+>>>>>>> 5cfe10916129cacf3bc66240d52e05f92931120a
             else:
                 node.next = HashTableEntry(key, value)
                 self.size += 1
@@ -126,6 +159,7 @@ class HashTable:
         """
         # Your code here
         hash_index = self.hash_index(key)
+<<<<<<< HEAD
 
         node = self.table[hash_index]
         # Checks to see if the key exists and if it doesn't, prints a warning
@@ -151,6 +185,30 @@ class HashTable:
             else:
                 prev_node.next = node.next
                 self.size -= 1
+=======
+        #Checks to see if the key exists and if it doesn't, prints a warning
+        if not self.table[hash_index]:
+            print("There is no object with this key.")
+        else:
+            node = self.table[hash_index]
+            #Finding if this is the only node at this index
+            if not node.next:
+                self.table[hash_index] = None
+                self.size -= 1
+            else:
+                #Finding the node that has the associated key.
+                prev_node = None
+                while node.next and node.key != key:
+                    prev_node = node
+                    node = node.next
+                #Finding if this is the last node in the list.
+                if not node.next:
+                    prev_node.next = None
+                    self.size -= 1
+                else:
+                    prev_node.next = node.next
+                    self.size -= 1
+>>>>>>> 5cfe10916129cacf3bc66240d52e05f92931120a
 
     def get(self, key):
         """
@@ -164,6 +222,7 @@ class HashTable:
 
         hash_index = self.hash_index(key)
 
+<<<<<<< HEAD
         if self.table[hash_index]:
             node = self.table[hash_index]
 
@@ -174,6 +233,20 @@ class HashTable:
 
         else:
             return None
+=======
+        if not self.table[hash_index]:
+            return None
+        else:
+            if not self.table[hash_index].next:
+                return self.table[hash_index].value
+            else:
+                node = self.table[hash_index]
+                while node.next and node.key != key:
+                    node = node.next
+
+                return node.value
+
+>>>>>>> 5cfe10916129cacf3bc66240d52e05f92931120a
 
     def resize(self, new_capacity):
         """
